@@ -7,17 +7,13 @@ import logging
 logger = logging.getLogger()
 
 @click.command()
-@click.argument("output_path")
 @click.argument("input_video_path")
-# @click.option("-mx", "--max_height", default=255)
-# @click.option("-b", "--backplate", is_flag=True, default=False)
-def create_cursor(output_path: str, input_video_path: str):
-    print("a")
+def create_cursor(input_video_path: str):
     logger.info("Loading video")
-    video_frames_path = parse_video(input_video_path)
+    video_frames_path = parse_video(input_video_path, 7)
     logger.info("Generating Cursor")
-    print("b")
-    frames_to_cursor(video_frames_path)
+    cursor_path = frames_to_cursor(video_frames_path)
+    
 
 
 if __name__ == "__main__":
